@@ -1,122 +1,152 @@
 [
   {
     "name": "Amar Rupaney",
-    "rating": "16 Ratings",
-    "propertyForSale": "4 Properties for Rent",
-    "propertyForRent": "4 Properties for Rent"
+    "company": "Golden Wave Properties",
+    "propertyType": [
+      "Apartment",
+      "Office Space",
+      "Villa"
+    ]
   },
   {
     "name": "Jack Beal",
-    "rating": "21 Ratings",
-    "propertyForSale": "37 Properties for Rent",
-    "propertyForRent": "37 Properties for Rent"
+    "company": "White & Co Real Estate",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Lauren Mason",
-    "rating": "19 Ratings",
-    "propertyForSale": "49 Properties for Rent",
-    "propertyForRent": "49 Properties for Rent"
+    "company": "Luxfolio Real Estate Brokers LLC",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Hugo Lazard",
-    "rating": "7 Ratings",
-    "propertyForSale": "1 Properties for Rent",
-    "propertyForRent": "1 Properties for Rent"
+    "company": "METROPOLITAN CAPITAL REAL ESTATE - SOLE PROPRIETORSHIP L.L.C.",
+    "propertyType": [
+      "Apartment",
+      "Townhouse",
+      "Villa"
+    ]
   },
   {
     "name": "Daniela Giannone",
-    "rating": "50 Ratings",
-    "propertyForSale": "13 Properties for Rent",
-    "propertyForRent": "13 Properties for Rent"
+    "company": "Probima Centre FZ-LLC",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Imran Ellam",
-    "rating": "9 Ratings",
-    "propertyForSale": "5 Properties for Rent",
-    "propertyForRent": "5 Properties for Rent"
+    "company": "Betterhomes - Abu Dhabi",
+    "propertyType": [
+      "Apartment",
+      "Townhouse"
+    ]
   },
   {
     "name": "Ayman Gumaa",
-    "rating": "14 Ratings",
-    "propertyForSale": "55 Properties for Sale",
-    "propertyForRent": "55 Properties for Sale"
+    "company": "Realty Real Estate",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Katrina Alvez",
-    "rating": "7 Ratings",
-    "propertyForSale": "1 Properties for Rent",
-    "propertyForRent": "1 Properties for Rent"
+    "company": "Henry Wiltshire International",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Rimsha Badar",
-    "rating": "9 Ratings",
-    "propertyForSale": "41 Properties for Rent",
-    "propertyForRent": "41 Properties for Rent"
+    "company": "Pacific Homes FZ-LLC",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Kieran Scarth",
-    "rating": "13 Ratings",
-    "propertyForSale": "6 Properties for Sale",
-    "propertyForRent": "6 Properties for Sale"
+    "company": "Allsopp & Allsopp - Jumeirah Golf Estates",
+    "propertyType": [
+      "Townhouse",
+      "Villa"
+    ]
   },
   {
     "name": "Mohamad Fakhr El Dine",
-    "rating": "4 Ratings",
-    "propertyForSale": "15 Properties for Sale",
-    "propertyForRent": "15 Properties for Sale"
+    "company": "Edwards and Towers Real Estate Brokers",
+    "propertyType": [
+      "Apartment",
+      "Villa"
+    ]
   },
   {
     "name": "Matthew Macloughlin",
-    "rating": "3 Ratings",
-    "propertyForSale": "5 Properties for Sale",
-    "propertyForRent": "5 Properties for Sale"
+    "company": "Espace Real Estate",
+    "propertyType": [
+      "Townhouse",
+      "Villa"
+    ]
   },
   {
     "name": "Paula Markvukaj",
-    "rating": "8 Ratings",
-    "propertyForSale": "18 Properties for Rent",
-    "propertyForRent": "18 Properties for Rent"
+    "company": "National Homes",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Lucas Barrionuevo Vicente",
-    "rating": "3 Ratings",
-    "propertyForSale": "6 Properties for Rent",
-    "propertyForRent": "6 Properties for Rent"
+    "company": "McCone Properties",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Amir Kasra Yousefi",
-    "rating": "14 Ratings",
-    "propertyForSale": "6 Properties for Rent",
-    "propertyForRent": "6 Properties for Rent"
+    "company": "Mirabella Properties",
+    "propertyType": [
+      "Townhouse",
+      "Villa"
+    ]
   },
   {
     "name": "Manuel Bitar",
-    "rating": "4 Ratings",
-    "propertyForSale": "10 Properties for Rent",
-    "propertyForRent": "10 Properties for Rent"
+    "company": "Al Hilal Property",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Mohamed Shendy",
-    "rating": "8 Ratings",
-    "propertyForSale": "11 Properties for Rent",
-    "propertyForRent": "11 Properties for Rent"
+    "company": "Edge Realty Real Estate",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Saqib Shafi",
-    "rating": "5 Ratings",
-    "propertyForSale": "11 Properties for Rent",
-    "propertyForRent": "11 Properties for Rent"
+    "company": "McCone Properties",
+    "propertyType": [
+      "Apartment"
+    ]
   },
   {
     "name": "Jade Morris",
-    "rating": "7 Ratings",
-    "propertyForSale": "2 Properties for Rent",
-    "propertyForRent": "2 Properties for Rent"
+    "company": "Jade & Co Real Estate",
+    "propertyType": [
+      "Villa"
+    ]
   },
   {
     "name": "Jackson Crosland",
-    "rating": "2 Ratings",
-    "propertyForSale": "3 Properties for Rent",
-    "propertyForRent": "3 Properties for Rent"
+    "company": "Croswell Real Estate",
+    "propertyType": [
+      "Townhouse",
+      "Villa"
+    ]
   }
 ]

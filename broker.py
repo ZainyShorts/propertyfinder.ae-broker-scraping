@@ -44,42 +44,47 @@ while True:
         )
 
         # Scrape the name
-        name = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q').text
+        try:
+            name = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q').text
+        except:
+            name = "Not specified"
 
-        # Scrape the nationality
+        # Scrape the company name
         try:
-            nationality = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item-label___B8y5').text
+            company = driver.find_element(By.CLASS_NAME, 'styles_broker__name__uSCaR').text
         except:
-            nationality = "Not specified"
+            company = "Not specified"
 
-         # Scrape the rating
-        try:
-            rating = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__reviews__C4RK3').text
-        except:
-            rating = "Not specified"
+        # Initialize a set to store unique property types
+        unique_property_types = set()
 
-        # Scrape the propertyForSale
+        # Locate the table and extract property types
         try:
-            propertyForSale = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item-listings__fO5_9').text
-        except:
-            propertyForSale = "Not specified"
-        
-         # Scrape the propertyForRent
-        try:
-            propertyForRent = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item-listings__fO5_9').text
-        except:
-            propertyForRent = "Not specified"
+            table = driver.find_element(By.XPATH, "//table[@class='table-module_table__L2zfY']")
+            rows = table.find_elements(By.XPATH, ".//tbody/tr")
+
+            # Loop through each row to extract the 4th column (Property Type)
+            for row in rows:
+                try:
+                    property_type = row.find_element(By.XPATH, ".//td[4]").text.strip()
+                    if property_type:
+                        unique_property_types.add(property_type)
+                except Exception as e:
+                    print(f"Error extracting property type for row: {e}")
+                    continue
+
+        except Exception as e:
+            print(f"Error locating table: {e}")
+            continue
 
 
             
 
-        # Add data to the list
+         # Add data to the list as an object
         brokers_data.append({
             "name": name,
-            # "nationality": nationality,
-            "rating":rating,
-            "propertyForSale": propertyForSale,
-            "propertyForRent": propertyForRent
+            "company": company,
+            "propertyType": list(unique_property_types)  # Converting set to list for JSON serialization
         })
 
         # Navigate back to the main page
