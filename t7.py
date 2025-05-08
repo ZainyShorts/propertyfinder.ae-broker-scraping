@@ -17,6 +17,9 @@ WebDriverWait(driver, 10).until(
 # List to hold all the broker data
 brokers_data = []
 
+# List to track problematic indices
+skip_indices = []
+
 # Loop through the elements and click them one by one
 index = 0
 while True:
@@ -30,9 +33,22 @@ while True:
             print("No more profiles to click.")
             break
 
-        # Scroll and click the element
-        people[index].click()
-        print(f"Clicked on profile {index + 1}")
+        # Skip problematic indices
+        if index in skip_indices:
+            index += 1
+            continue
+
+        try:
+            # Scroll the element into view and click it
+            driver.execute_script("arguments[0].scrollIntoView(true);", people[index])
+            time.sleep(1)  # Small delay to adjust view
+            people[index].click()
+            print(f"Clicked on profile {index + 1}")
+        except Exception as e:
+            print(f"Skipping index {index} due to error: {e}")
+            skip_indices.append(index)
+            index += 1
+            continue
 
         # Wait for the profile page to load
         WebDriverWait(driver, 15).until(
@@ -88,8 +104,9 @@ while True:
         index += 1
 
     except Exception as e:
-        print(f"An error occurred: {e}")
-        break
+        print(f"An error occurred at index {index}: {e}")
+        skip_indices.append(index)  # Mark it as problematic
+        index += 1  # Move to the next index
 
 # Close the driver
 driver.quit()

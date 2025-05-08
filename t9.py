@@ -11,7 +11,7 @@ driver.get('https://www.propertyfinder.ae/en/find-agent/search?page=1')
 
 # Wait for the elements to load properly
 WebDriverWait(driver, 10).until(
-    EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
+    EC.presence_of_all_elements_located((By.XPATH, "(//ul[@aria-label='Matching agents'])[1]/li"))
 )
 
 # List to hold all the broker data
@@ -21,9 +21,9 @@ brokers_data = []
 index = 0
 while True:
     try:
-        # Re-fetch the list of people elements
+        # Re-fetch the list of people elements using the new XPath
         people = WebDriverWait(driver, 15).until(
-            EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
+            EC.presence_of_all_elements_located((By.XPATH, "(//ul[@aria-label='Matching agents'])[1]/li"))
         )
 
         if index >= len(people):
@@ -31,6 +31,7 @@ while True:
             break
 
         # Scroll and click the element
+        driver.execute_script("arguments[0].scrollIntoView();", people[index])
         people[index].click()
         print(f"Clicked on profile {index + 1}")
 
@@ -81,7 +82,7 @@ while True:
 
         # Wait for the list to reload
         WebDriverWait(driver, 10).until(
-            EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
+            EC.presence_of_all_elements_located((By.XPATH, "(//ul[@aria-label='Matching agents'])[1]/li"))
         )
 
         # Increment the index
@@ -89,7 +90,9 @@ while True:
 
     except Exception as e:
         print(f"An error occurred: {e}")
-        break
+        continue
+        # break
+
 
 # Close the driver
 driver.quit()

@@ -1,49 +1,122 @@
 [
   {
     "name": "Amar Rupaney",
-    "company": "Golden Wave Properties",
-    "propertyType": [
-      "Apartment",
-      "Villa",
-      "Office Space"
-    ]
+    "rating": "16 Ratings",
+    "propertyForSale": "4 Properties for Rent",
+    "propertyForRent": "4 Properties for Rent"
   },
   {
     "name": "Jack Beal",
-    "company": "White & Co Real Estate",
-    "propertyType": [
-      "Apartment"
-    ]
+    "rating": "21 Ratings",
+    "propertyForSale": "37 Properties for Rent",
+    "propertyForRent": "37 Properties for Rent"
   },
   {
     "name": "Lauren Mason",
-    "company": "Luxfolio Real Estate Brokers LLC",
-    "propertyType": [
-      "Apartment"
-    ]
+    "rating": "19 Ratings",
+    "propertyForSale": "49 Properties for Rent",
+    "propertyForRent": "49 Properties for Rent"
   },
   {
     "name": "Hugo Lazard",
-    "company": "METROPOLITAN CAPITAL REAL ESTATE - SOLE PROPRIETORSHIP L.L.C.",
-    "propertyType": [
-      "Apartment",
-      "Villa",
-      "Townhouse"
-    ]
+    "rating": "7 Ratings",
+    "propertyForSale": "1 Properties for Rent",
+    "propertyForRent": "1 Properties for Rent"
   },
   {
     "name": "Daniela Giannone",
-    "company": "Probima Centre FZ-LLC",
-    "propertyType": [
-      "Apartment"
-    ]
+    "rating": "50 Ratings",
+    "propertyForSale": "13 Properties for Rent",
+    "propertyForRent": "13 Properties for Rent"
   },
   {
     "name": "Imran Ellam",
-    "company": "Betterhomes - Abu Dhabi",
-    "propertyType": [
-      "Apartment",
-      "Townhouse"
-    ]
+    "rating": "9 Ratings",
+    "propertyForSale": "5 Properties for Rent",
+    "propertyForRent": "5 Properties for Rent"
+  },
+  {
+    "name": "Ayman Gumaa",
+    "rating": "14 Ratings",
+    "propertyForSale": "55 Properties for Sale",
+    "propertyForRent": "55 Properties for Sale"
+  },
+  {
+    "name": "Katrina Alvez",
+    "rating": "7 Ratings",
+    "propertyForSale": "1 Properties for Rent",
+    "propertyForRent": "1 Properties for Rent"
+  },
+  {
+    "name": "Rimsha Badar",
+    "rating": "9 Ratings",
+    "propertyForSale": "41 Properties for Rent",
+    "propertyForRent": "41 Properties for Rent"
+  },
+  {
+    "name": "Kieran Scarth",
+    "rating": "13 Ratings",
+    "propertyForSale": "6 Properties for Sale",
+    "propertyForRent": "6 Properties for Sale"
+  },
+  {
+    "name": "Mohamad Fakhr El Dine",
+    "rating": "4 Ratings",
+    "propertyForSale": "15 Properties for Sale",
+    "propertyForRent": "15 Properties for Sale"
+  },
+  {
+    "name": "Matthew Macloughlin",
+    "rating": "3 Ratings",
+    "propertyForSale": "5 Properties for Sale",
+    "propertyForRent": "5 Properties for Sale"
+  },
+  {
+    "name": "Paula Markvukaj",
+    "rating": "8 Ratings",
+    "propertyForSale": "18 Properties for Rent",
+    "propertyForRent": "18 Properties for Rent"
+  },
+  {
+    "name": "Lucas Barrionuevo Vicente",
+    "rating": "3 Ratings",
+    "propertyForSale": "6 Properties for Rent",
+    "propertyForRent": "6 Properties for Rent"
+  },
+  {
+    "name": "Amir Kasra Yousefi",
+    "rating": "14 Ratings",
+    "propertyForSale": "6 Properties for Rent",
+    "propertyForRent": "6 Properties for Rent"
+  },
+  {
+    "name": "Manuel Bitar",
+    "rating": "4 Ratings",
+    "propertyForSale": "10 Properties for Rent",
+    "propertyForRent": "10 Properties for Rent"
+  },
+  {
+    "name": "Mohamed Shendy",
+    "rating": "8 Ratings",
+    "propertyForSale": "11 Properties for Rent",
+    "propertyForRent": "11 Properties for Rent"
+  },
+  {
+    "name": "Saqib Shafi",
+    "rating": "5 Ratings",
+    "propertyForSale": "11 Properties for Rent",
+    "propertyForRent": "11 Properties for Rent"
+  },
+  {
+    "name": "Jade Morris",
+    "rating": "7 Ratings",
+    "propertyForSale": "2 Properties for Rent",
+    "propertyForRent": "2 Properties for Rent"
+  },
+  {
+    "name": "Jackson Crosland",
+    "rating": "2 Ratings",
+    "propertyForSale": "3 Properties for Rent",
+    "propertyForRent": "3 Properties for Rent"
   }
 ]

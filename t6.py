@@ -7,40 +7,61 @@ import json
 
 # Set up the WebDriver
 driver = webdriver.Chrome()
+driver.maximize_window()
 driver.get('https://www.propertyfinder.ae/en/find-agent/search?page=1')
-
-# Wait for the elements to load properly
-WebDriverWait(driver, 10).until(
-    EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
-)
 
 # List to hold all the broker data
 brokers_data = []
+page_number = 1
 
-# Loop through the elements and click them one by one
-index = 0
+# Function to click with retries
+def click_with_retry(element, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            driver.execute_script("arguments[0].scrollIntoView();", element)
+            time.sleep(1)
+            driver.execute_script("arguments[0].click();", element)
+            return True
+        except Exception as e:
+            print(f"Click attempt {attempt + 1} failed: {e}")
+            time.sleep(2)
+    return False
+
 while True:
-    try:
-        # Re-fetch the list of people elements
-        people = WebDriverWait(driver, 15).until(
-            EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
-        )
+    print(f"Scraping page {page_number}...")
 
-        if index >= len(people):
-            print("No more profiles to click.")
-            break
+    # Wait for the list to load properly
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
+    )
 
-        # Scroll and click the element
-        people[index].click()
-        print(f"Clicked on profile {index + 1}")
+    # Re-fetch the list of people elements
+    people = driver.find_elements(By.CLASS_NAME, 'styles_item__YzikE')
+
+    for index, person in enumerate(people):
+        print(f"Processing profile {index + 1} on page {page_number}")
+
+        # Attempt to click with retries
+        if not click_with_retry(person):
+            print(f"Skipping profile {index + 1} due to click failure.")
+            continue
 
         # Wait for the profile page to load
-        WebDriverWait(driver, 15).until(
-            EC.presence_of_element_located((By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q'))
-        )
+        try:
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q'))
+            )
+        except Exception as e:
+            print(f"Failed to load profile {index + 1}, skipping...")
+            driver.back()
+            time.sleep(2)
+            continue
 
         # Scrape the name
-        name = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q').text
+        try:
+            name = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q').text
+        except:
+            name = "Not specified"
 
         # Scrape the company name
         try:
@@ -67,7 +88,10 @@ while True:
                     continue
 
         except Exception as e:
-            print(f"Error locating table: {e}")
+            print(f"Error locating table for profile {index + 1}: {e}")
+            driver.back()
+            time.sleep(2)
+            continue
 
         # Add data to the list as an object
         brokers_data.append({
@@ -84,11 +108,17 @@ while True:
             EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
         )
 
-        # Increment the index
-        index += 1
-
+    # Find the next page button
+    try:
+        next_button = driver.find_element(By.XPATH, "//a[@aria-label='Next']")
+        if "disabled" in next_button.get_attribute("class"):
+            print("No more pages found. Scraping complete.")
+            break
+        driver.execute_script("arguments[0].click();", next_button)
+        page_number += 1
+        time.sleep(3)
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"No more pages to scrape: {e}")
         break
 
 # Close the driver
