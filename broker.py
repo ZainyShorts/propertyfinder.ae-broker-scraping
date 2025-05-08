@@ -18,6 +18,7 @@ WebDriverWait(driver, 10).until(
     EC.presence_of_all_elements_located((By.CLASS_NAME, 'styles_item__YzikE'))
 )
 
+broken_links = []
 # List to hold all the broker data
 brokers_data = []
 
@@ -100,7 +101,11 @@ while True:
 
     except Exception as e:
         print(f"An error occurred: {e}")
-        break
+        broken_links.append({
+            "profile": index
+        })
+        index += 1
+        continue
 
 # Close the driver
 driver.quit()
