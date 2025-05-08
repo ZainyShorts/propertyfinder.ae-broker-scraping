@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -51,40 +50,24 @@ while page_number <= total_pages:
                 ActionChains(driver).move_to_element(people[index]).click().perform()
                 print(f"Clicked on profile {index + 1} on page {page_number}")
 
-                
+                # NEW: Click the "Show All" button if it exists
+                try:
+                    show_all_button = WebDriverWait(driver, 10).until(
+                        EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Show All']"))
+                    )
+                    driver.execute_script("arguments[0].scrollIntoView(true);", show_all_button)
+                    time.sleep(1)  # Give some time for smooth scroll
+                    show_all_button.click()
+                    print("Clicked 'Show All' button")
+                except Exception as e:
+                    print(f"'Show All' button not found or could not be clicked: {e}")
 
+                time.sleep(1)
+                
                 # Wait for the profile page to load
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q'))
                 )
-
-               # NEW: Click the "Show All" button if it exists
-                # try:
-                #     show_all_button = WebDriverWait(driver, 10).until(
-                #         EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Show All']"))
-                #     )
-                #     show_all_button.click()
-                #     print("Clicked 'Show All' button")
-                # except Exception as e:
-                #     print(f"'Show All' button not found or could not be clicked: {e}")
-
-                # time.sleep(1)
-
-                # Click the "Show All" button if it exists
-                try:
-                    show_all_button = WebDriverWait(driver, 10).until(
-                        EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-testid='show-all']"))
-                    )
-                    driver.execute_script("arguments[0].click();", show_all_button)
-                    print("Clicked 'Show All' button")
-
-                    # Wait for the table to expand and load
-                    WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.XPATH, "//table[@class='table-module_table__L2zfY']"))
-                    )
-                    print("Table data loaded successfully.")
-                except Exception as e:
-                    print(f"'Show All' button not found or could not be clicked: {e}")
 
                 # Scrape the name
                 try:
@@ -159,7 +142,7 @@ while page_number <= total_pages:
     # Increment to the next page
     page_number += 1
 
-    if page_number == 3:
+    if page_number == 3:  # Limit for testing
         break
 
     # Every 20 entries, append to JSON file
