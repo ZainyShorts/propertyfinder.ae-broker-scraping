@@ -1,11 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import json
-import pandas as pd
 
 # Set up the WebDriver
 driver = webdriver.Chrome()
@@ -33,7 +31,7 @@ while True:
             break
         
         # Scroll and click the element
-        ActionChains(driver).move_to_element(people[index]).click().perform()
+        people[index].click()
         print(f"Clicked on profile {index + 1}")
 
         # Wait for the profile page to load
@@ -44,34 +42,38 @@ while True:
         # Scrape the name
         name = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item--bold__nEM5q').text
 
-        # Scrape the nationality
-        try:
-            nationality = driver.find_element(By.CLASS_NAME, 'styles_agent-hero-section__info-item-label___B8y5').text
-        except:
-            nationality = "Not specified"
-
-         # Scrape the propertyType
-        try:
-            propertyType = driver.find_element(By.CLASS_NAME, 'table-module_table__body__9nNRk').text
-        except:
-            propertyType = "Not specified"
-
-        # Scrape the propertyForSale
+        # Scrape the company name
         try:
             company = driver.find_element(By.CLASS_NAME, 'styles_broker__name__uSCaR').text
         except:
             company = "Not specified"
-        
-  
 
+        # Initialize a set to store unique property types
+        unique_property_types = set()
 
-            
+        # Locate the table and extract property types
+        try:
+            table = driver.find_element(By.XPATH, "//table[@class='table-module_table__L2zfY']")
+            rows = table.find_elements(By.XPATH, ".//tbody/tr")
 
-        # Add data to the list
+            # Loop through each row to extract the 4th column (Property Type)
+            for row in rows:
+                try:
+                    property_type = row.find_element(By.XPATH, ".//td[4]").text.strip()
+                    if property_type:
+                        unique_property_types.add(property_type)
+                except Exception as e:
+                    print(f"Error extracting property type for row: {e}")
+                    continue
+
+        except Exception as e:
+            print(f"Error locating table: {e}")
+
+        # Add data to the list as an object
         brokers_data.append({
             "name": name,
             "company": company,
-            "propertyType":propertyType,
+            "propertyType": list(unique_property_types)  # Converting set to list for JSON serialization
         })
 
         # Navigate back to the main page
@@ -92,15 +94,9 @@ while True:
 # Close the driver
 driver.quit()
 
-# Store the data in JSON format
-with open('brokers_data.json', 'w') as json_file:
+# Save the data to JSON
+output_file = 'brokers_data.json'
+with open(output_file, 'w') as json_file:
     json.dump(brokers_data, json_file, indent=2)
 
-# Convert the JSON data to a DataFrame
-df = pd.DataFrame(brokers_data)
-
-# Save the DataFrame to an Excel file
-output_path = 'brokers_data.xlsx'
-df.to_excel(output_path, index=False)
-
-output_path
+print(f"Data saved to {output_file}")

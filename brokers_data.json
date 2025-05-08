@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Amar Rupaney",
+    "company": "Golden Wave Properties",
+    "propertyType": [
+      "Apartment",
+      "Villa",
+      "Office Space"
+    ]
+  },
+  {
+    "name": "Jack Beal",
+    "company": "White & Co Real Estate",
+    "propertyType": [
+      "Apartment"
+    ]
+  },
+  {
+    "name": "Lauren Mason",
+    "company": "Luxfolio Real Estate Brokers LLC",
+    "propertyType": [
+      "Apartment"
+    ]
+  },
+  {
+    "name": "Hugo Lazard",
+    "company": "METROPOLITAN CAPITAL REAL ESTATE - SOLE PROPRIETORSHIP L.L.C.",
+    "propertyType": [
+      "Apartment",
+      "Villa",
+      "Townhouse"
+    ]
+  },
+  {
+    "name": "Daniela Giannone",
+    "company": "Probima Centre FZ-LLC",
+    "propertyType": [
+      "Apartment"
+    ]
+  },
+  {
+    "name": "Imran Ellam",
+    "company": "Betterhomes - Abu Dhabi",
+    "propertyType": [
+      "Apartment",
+      "Townhouse"
+    ]
+  }
+]
