@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -11,16 +10,16 @@ import os
 
 # Set up the WebDriver
 driver = webdriver.Chrome()
-page_number = 1
-total_pages = 500
+page_number = 51
+total_pages = 100
 
 # Initialize lists to hold data and broken links
 broken_links = []
 brokers_data = []
 
 # File paths
-json_file_path = 'brokers_data.json'
-excel_file_path = 'brokers_data.xlsx'
+json_file_path = 'two.json'
+excel_file_path = 'two.xlsx'
 
 # If JSON file exists, load existing data
 if os.path.exists(json_file_path):
@@ -50,8 +49,6 @@ while page_number <= total_pages:
                 # Scroll and click the element
                 ActionChains(driver).move_to_element(people[index]).click().perform()
                 print(f"Clicked on profile {index + 1} on page {page_number}")
-
-                
 
                 # Wait for the profile page to load
                 WebDriverWait(driver, 10).until(
@@ -104,7 +101,9 @@ while page_number <= total_pages:
                             continue
 
                 except Exception as e:
-                    print(f"Error locating table: {e}")
+                    print(f"Table not found or could not be loaded, skipping this profile. Error: {e}")
+                    # Skip to the next person if the table is not found
+                    index += 1
                     continue
 
                 # Add data to the list as an object

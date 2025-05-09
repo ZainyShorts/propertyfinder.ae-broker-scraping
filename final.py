@@ -15,7 +15,7 @@ page_number = 1
 total_pages = 500
 
 # Initialize lists to hold data and broken links
-broken_links = []
+# broken_links = []
 brokers_data = []
 
 # File paths
@@ -104,8 +104,7 @@ while page_number <= total_pages:
                             continue
 
                 except Exception as e:
-                    print(f"Error locating table: {e}")
-                    continue
+                    print(f"Table not found: page: {page_number} index: {index}")
 
                 # Add data to the list as an object
                 brokers_data.append({
@@ -127,19 +126,19 @@ while page_number <= total_pages:
 
             except Exception as e:
                 print(f"An error occurred: {e}")
-                broken_links.append({
-                    "profile": index,
-                    "page": page_number
-                })
+                # broken_links.append({
+                #     "profile": index,
+                #     "page": page_number
+                # })
                 index += 1
                 continue
 
     except Exception as e:
         print(f"Failed to load page {page_number}: {e}")
-        broken_links.append({
-            "profile": "Failed to load page",
-            "page": page_number
-        })
+        # broken_links.append({
+        #     "profile": "Failed to load page",
+        #     "page": page_number
+        # })
         page_number += 1
         continue
 
@@ -147,16 +146,16 @@ while page_number <= total_pages:
     page_number += 1
 
     # Every 20 entries, append to JSON file
-    if len(brokers_data) % 20 == 0:
-        print("Saving to JSON file...")
+    # if len(brokers_data) % 20 == 0:
+    print("Saving to JSON file...")
 
         # Save the data to JSON
-        with open(json_file_path, 'w') as json_file:
-            json.dump(brokers_data, json_file, indent=2)
+    with open(json_file_path, 'w') as json_file:
+        json.dump(brokers_data, json_file, indent=2)
 
         # Also update the Excel file
-        df = pd.DataFrame(brokers_data)
-        df.to_excel(excel_file_path, index=False)
+    df = pd.DataFrame(brokers_data)
+    df.to_excel(excel_file_path, index=False)
 
 # Close the driver
 driver.quit()

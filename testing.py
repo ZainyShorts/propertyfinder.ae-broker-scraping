@@ -11,16 +11,16 @@ import os
 
 # Set up the WebDriver
 driver = webdriver.Chrome()
-page_number = 1
-total_pages = 500
+page_number = 351
+total_pages = 351
 
 # Initialize lists to hold data and broken links
 broken_links = []
 brokers_data = []
 
 # File paths
-json_file_path = 'brokers_data.json'
-excel_file_path = 'brokers_data.xlsx'
+json_file_path = 'test.json'
+excel_file_path = 'test.xlsx'
 
 # If JSON file exists, load existing data
 if os.path.exists(json_file_path):
@@ -147,16 +147,16 @@ while page_number <= total_pages:
     page_number += 1
 
     # Every 20 entries, append to JSON file
-    if len(brokers_data) % 20 == 0:
-        print("Saving to JSON file...")
+    # if len(brokers_data) % 20 == 0:
+    # print("Saving to JSON file...")
 
         # Save the data to JSON
-        with open(json_file_path, 'w') as json_file:
-            json.dump(brokers_data, json_file, indent=2)
+    with open(json_file_path, 'w') as json_file:
+        json.dump(brokers_data, json_file, indent=2)
 
         # Also update the Excel file
-        df = pd.DataFrame(brokers_data)
-        df.to_excel(excel_file_path, index=False)
+    df = pd.DataFrame(brokers_data)
+    df.to_excel(excel_file_path, index=False)
 
 # Close the driver
 driver.quit()
